@@ -1,12 +1,12 @@
 # Django Contact Manager with Custom User Management
 
-## Custom User
+### Custom User
 
 A full-featured Django web application featuring a custom user model and modern Tailwind CSS UI. It includes user registration, login, logout, profile viewing/updating, and secure profile deletion with password confirmation.
 
 ---
 
-## 🚀 Features
+### 🚀 Features
 
 - Custom user model (`CustomUser`)
 - Tailwind CSS–styled forms and templates
@@ -21,7 +21,7 @@ A full-featured Django web application featuring a custom user model and modern 
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 - **Backend**: Django, Python
 - **Frontend**: Tailwind CSS
