@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}{{ contact.first_name }} {{ contact.last_name }}{% endblock title %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-10">
+  <div class="bg-white shadow-lg rounded-xl p-8 max-w-3xl mx-auto">
+    <div class="flex flex-col items-center text-center">
+      {% if contact.contact_photo %}
+        <img src="{{ contact.contact_photo.url }}" alt="Photo of {{ contact.first_name }}" 
+             class="w-32 h-32 rounded-full object-cover border-4 border-indigo-500 shadow-md mb-4">
+      {% else %}
+        <div class="w-32 h-32 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center text-2xl font-bold mb-4">
+          {{ contact.first_name|first|upper }}{{ contact.last_name|first|upper }}
+        </div>
+      {% endif %}
+
+      <h2 class="text-2xl font-bold text-gray-900">
+        {{ contact.first_name }} {{ contact.last_name }}
+      </h2>
+      <p class="text-indigo-600 capitalize mt-1">{{ contact.contact_type }}</p>
+      {% if contact.nickname %}
+        <p class="text-sm text-gray-500">Nickname: {{ contact.nickname }}</p>
+      {% endif %}
+
+      <div class="mt-4 space-y-2 text-gray-700 text-sm w-full text-left">
+        <p><strong>Primary Contact:</strong> {{ contact.contact }}</p>
+        {% if contact.alternate_contact %}
+          <p><strong>Alternate Contact:</strong> {{ contact.alternate_contact }}</p>
+        {% endif %}
+        {% if contact.email %}
+          <p><strong>Email:</strong> {{ contact.email }}</p>
+        {% endif %}
+        {% if contact.alternate_email %}
+          <p><strong>Alternate Email:</strong> {{ contact.alternate_email }}</p>
+        {% endif %}
+        {% if contact.preferred_communication %}
+          <p><strong>Preferred Communication:</strong> {{ contact.preferred_communication }}</p>
+        {% endif %}
+        {% if contact.date_of_birth %}
+          <p><strong>Date of Birth:</strong> {{ contact.date_of_birth }}</p>
+        {% endif %}
+        <p><strong>Gender:</strong> {{ contact.gender }}</p>
+        {% if contact.job_title %}
+          <p><strong>Job Title:</strong> {{ contact.job_title }}</p>
+        {% endif %}
+        {% if contact.company %}
+          <p><strong>Company:</strong> {{ contact.company }}</p>
+        {% endif %}
+        {% if contact.website %}
+          <p><strong>Website:</strong> <a href="{{ contact.website }}" class="text-blue-600 underline" target="_blank">{{ contact.website }}</a></p>
+        {% endif %}
+
+        <hr class="my-4">
+
+        <p><strong>Address:</strong> {{ contact.address }}, {{ contact.city }}, {{ contact.state }}, {{ contact.country }} - {{ contact.postal_code }}</p>
+
+        {% if contact.linkedin_username %}
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/{{ contact.linkedin_username }}" class="text-blue-600 underline" target="_blank">{{ contact.linkedin_username }}</a></p>
+        {% endif %}
+        {% if contact.twitter_username %}
+          <p><strong>Twitter:</strong> <a href="https://twitter.com/{{ contact.twitter_username }}" class="text-blue-600 underline" target="_blank">@{{ contact.twitter_username }}</a></p>
+        {% endif %}
+        {% if contact.facebook_username %}
+          <p><strong>Facebook:</strong> <a href="https://facebook.com/{{ contact.facebook_username }}" class="text-blue-600 underline" target="_blank">{{ contact.facebook_username }}</a></p>
+        {% endif %}
+        {% if contact.instagram_username %}
+          <p><strong>Instagram:</strong> <a href="https://instagram.com/{{ contact.instagram_username }}" class="text-blue-600 underline" target="_blank">@{{ contact.instagram_username }}</a></p>
+        {% endif %}
+
+        {% if contact.notes %}
+          <hr class="my-4">
+          <p><strong>Notes:</strong> {{ contact.notes }}</p>
+        {% endif %}
+      </div>
+
+      <div class="mt-6 flex justify-center gap-4">
+        <a href="{% url 'contact_update' contact.id %}" class="px-4 py-2 text-sm font-medium bg-yellow-400 hover:bg-yellow-500 text-white rounded">
+          Edit
+        </a>
+        <a href="{% url 'contact_delete' contact.id %}" class="px-4 py-2 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded">
+          Delete
+        </a>
+        <a href="{% url 'contact_list' %}" class="px-4 py-2 text-sm font-medium bg-gray-200 hover:bg-gray-300 text-gray-800 rounded">
+          Back
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

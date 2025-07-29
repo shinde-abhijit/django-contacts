@@ -12,6 +12,9 @@
 
 <body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
 
+    {% include 'components/navbar.html' %}
+    
+    
     {% if messages %}
         <div class="alert space-y-2 my-4 px-4 max-w-4xl mx-auto">
             {% for message in messages %}
@@ -44,6 +47,7 @@
 </div>
 
 
+{% include 'components/footer.html' %}
 
 
 <script>

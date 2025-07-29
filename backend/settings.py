@@ -18,6 +18,8 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 INSTALLED_APPS = [
     "accounts",
+    "base",
+    "contacts",
     "tailwind",
     "theme",
     "django.contrib.admin",

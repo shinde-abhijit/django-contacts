@@ -1,0 +1,124 @@
+{% load static %}
+
+{% load static %}
+
+<header>
+    <div class="header-container">
+        <div>
+            <h1 class="text-lg uppercase font-semibold">Contact Manager</h1>
+        </div>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li>
+                        Contact
+                        <ul class="dropdown">
+                            <li><a href="{% url 'add_contact' %}">Add</a></li>
+                            <li><a href="{% url 'contact_list' %}">List</a></li>
+                            <li><a href="{% url 'contact_search' %}">Search</a></li>
+                            <li><a href="{% url 'city_list' %}">City List</a></li>
+                            <li><a href="{% url 'state_list' %}">State List</a></li>
+                            <li><a href="{% url 'country_list' %}">Country List</a></li>
+                            <li><a href="{% url 'contact_type_list' %}">Type List</a></li>
+                            <li><a href="{% url 'preferred_communication_list' %}">Contact Method</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li>
+                    User
+                    <ul class="dropdown">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li><a href="{% url 'update_profile' %}">Update</a></li>
+                            <li><a href="{% url 'delete_profile' %}">Delete</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'user_register' %}">Register</a></li>
+                            <li><a href="{% url 'user_login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<style>
+header {
+    background-color: #FFF;
+    color: #000;
+    height: 4rem;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    display: grid;
+    place-items: center;
+    user-select: none;
+}
+
+.header-container {
+    width: 80%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container ul {
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.header-container ul li {
+    height: 4rem;
+    line-height: 4rem;
+    position: relative;
+}
+
+.header-container ul li:hover {
+    color: red;
+    transition: all .3s linear;
+}
+
+.header-container .dropdown {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    min-width: 10rem;
+    background-color: #fff;
+    color: #000;
+
+    padding: 1.25rem 0;
+    gap: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    top: 8rem;
+    transition: all .3s linear;
+}
+
+.header-container ul li:hover > .dropdown {
+    visibility: visible;
+    opacity: 1;
+    top: 4rem;
+}
+
+.header-container .dropdown li {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.header-container .dropdown li:hover {
+    background-color: #F5F7F9;
+    border-bottom: 1px solid red;
+    transition: all 0.3s linear;
+}
+</style>

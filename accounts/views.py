@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import CustomUser
 from .forms import (
     CustomUserCreationForm,
     CustomUserUpdateForm,
@@ -97,7 +95,6 @@ def update_profile_view(request):
             return redirect("profile")
     else:
         form = CustomUserUpdateForm(instance=request.user)
-
     context = {
         "user": user,
         "form": form,
