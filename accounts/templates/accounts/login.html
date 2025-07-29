@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}User Login{% endblock title %}
+
+{% block content %}
+    <div class="max-w-7xl w-xl p-8 bg-white mx-auto rounded-lg mt-4 mb-4 ">
+        <h1 class="{{ title_tailwind_classes }}">User Login</h1>
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{ form }}
+            <button 
+            class="w-full uppercase font-semibold text-white bg-green-800 
+                hover:bg-green-600 p-2 cursor-pointer 
+                rounded-lg duration-300
+                "
+            >
+                Login
+            </button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Delete Profile{% endblock title %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-20 p-8 bg-white rounded-lg shadow text-center">
+  <h1 class="{{ title_tailwind_classes }} text-red-600 mb-4">Confirm Account Deletion</h1>
+  <p class="mb-6 text-gray-700">This will permanently delete your account. Enter your password to confirm.</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-6 rounded-lg duration-300 w-full mt-4">
+      Delete My Account
+    </button>
+    <a href="{% url 'profile' %}" class="block mt-4 text-indigo-600 hover:underline">Cancel</a>
+  </form>
+</div>
+{% endblock content %}

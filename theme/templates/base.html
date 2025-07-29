@@ -12,8 +12,53 @@
 
 <body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
 
-<div class="bg-gray-50 text-gray-800">
+    {% if messages %}
+        <div class="alert space-y-2 my-4 px-4 max-w-4xl mx-auto">
+            {% for message in messages %}
+                <div 
+                    class="
+                    px-4 py-3 rounded-lg text-white font-semibold
+                    {% if message.tags == 'success' %}
+                        bg-green-600
+                    {% elif message.tags == 'error' %}
+                        bg-red-600
+                    {% elif message.tags == 'warning' %}
+                        bg-yellow-500
+                    {% elif message.tags == 'info' %}
+                        bg-blue-500
+                    {% else %}
+                        bg-gray-700
+                    {% endif %}
+                    "
+                >
+                    {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+    
+
+<div>
     {% block content %}{% endblock content %}
 </div>
+
+
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.alert').forEach(el => {
+      setTimeout(() => {
+        el.style.transition = 'opacity 1s';
+        el.style.opacity = 0;
+        setTimeout(() => el.style.display = 'none', 1000);
+      }, 3000);
+    });
+  });
+</script>
+
+
+
 </body>
 </html>

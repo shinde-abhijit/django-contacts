@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Logout User{% endblock title %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-20 p-8 bg-white rounded-lg shadow-lg text-center">
+    <h1 class="{{ title_tailwind_classes }} mb-6">Confirm Logout</h1>
+    <p class="mb-8 text-gray-700">Are you sure you want to logout, <span class="font-semibold">{{ user.username }}</span>?</p>
+
+    <form method="POST" class="flex justify-center space-x-4">
+        {% csrf_token %}
+        <button 
+            type="submit" 
+            class="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 transition duration-300"
+        >
+            Logout
+        </button>
+        <a href="{% url 'profile' %}" 
+           class="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg hover:bg-gray-400 transition duration-300"
+        >
+            Cancel
+        </a>
+    </form>
+</div>
+{% endblock content %}
