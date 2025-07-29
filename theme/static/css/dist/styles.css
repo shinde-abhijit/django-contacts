@@ -17,7 +17,6 @@
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-yellow-700: oklch(55.4% 0.135 66.442);
     --color-green-600: oklch(62.7% 0.194 149.214);
-    --color-green-800: oklch(44.8% 0.119 151.328);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-indigo-300: oklch(78.5% 0.115 274.713);
@@ -226,8 +225,20 @@
   }
 }
 @layer utilities {
+  .fixed {
+    position: fixed;
+  }
   .static {
     position: static;
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
+  .z-50 {
+    z-index: 50;
   }
   .col-span-1 {
     grid-column: span 1 / span 1;
@@ -323,6 +334,9 @@
   .inline-flex {
     display: inline-flex;
   }
+  .h-16 {
+    height: calc(var(--spacing) * 16);
+  }
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
@@ -334,6 +348,9 @@
   }
   .h-36 {
     height: calc(var(--spacing) * 36);
+  }
+  .min-h-screen {
+    min-height: 100vh;
   }
   .w-2xl {
     width: var(--container-2xl);
@@ -507,14 +524,14 @@
   .bg-green-600 {
     background-color: var(--color-green-600);
   }
-  .bg-green-800 {
-    background-color: var(--color-green-800);
-  }
   .bg-indigo-500 {
     background-color: var(--color-indigo-500);
   }
   .bg-indigo-600 {
     background-color: var(--color-indigo-600);
+  }
+  .bg-indigo-800 {
+    background-color: var(--color-indigo-800);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -767,6 +784,11 @@
   @media (hover: hover) {
     .hover\:bg-green-600:hover {
       background-color: var(--color-green-600);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-indigo-600:hover {
+      background-color: var(--color-indigo-600);
     }
   }
   @media (hover: hover) {

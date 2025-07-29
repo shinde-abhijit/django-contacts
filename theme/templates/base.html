@@ -10,11 +10,16 @@
     {% tailwind_css %}
 </head>
 
-<body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
+<!-- 1. Setup the layout with full height and vertical stacking -->
+<body class="bg-gray-50 text-black font-serif leading-normal tracking-normal min-h-screen flex flex-col">
 
+    <!-- 2. Include the fixed header -->
     {% include 'components/navbar.html' %}
     
-    
+    <!-- 3. Spacer to push content below fixed navbar (height: 4rem / 64px) -->
+    <div class="h-16"></div>
+
+    <!-- 4. Flash messages -->
     {% if messages %}
         <div class="alert space-y-2 my-4 px-4 max-w-4xl mx-auto">
             {% for message in messages %}
@@ -37,29 +42,28 @@
                     {{ message }}
                 </div>
             {% endfor %}
-            </div>
-        {% endif %}
+        </div>
+    {% endif %}
 
-    
+    <!-- 5. Main content area that expands to fill available space -->
+    <main class="flex-1 px-4">
+        {% block content %}{% endblock content %}
+    </main>
 
-<div>
-    {% block content %}{% endblock content %}
-</div>
+    <!-- 6. Footer (always at bottom if content is short) -->
+    {% include 'components/footer.html' %}
 
-
-{% include 'components/footer.html' %}
-
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.alert').forEach(el => {
-      setTimeout(() => {
-        el.style.transition = 'opacity 1s';
-        el.style.opacity = 0;
-        setTimeout(() => el.style.display = 'none', 1000);
-      }, 3000);
-    });
-  });
-</script>
+    <!-- 7. Message fade-out script -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.alert').forEach(el => {
+          setTimeout(() => {
+            el.style.transition = 'opacity 1s';
+            el.style.opacity = 0;
+            setTimeout(() => el.style.display = 'none', 1000);
+          }, 3000);
+        });
+      });
+    </script>
 </body>
 </html>
