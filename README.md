@@ -56,7 +56,7 @@ A comprehensive Django-based contacts management system that allows authenticate
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/yourrepo.git
+git clone https://github.com/shinde-abhijit/django-contacts.git
 cd yourrepo
 
 # Create virtual environment
