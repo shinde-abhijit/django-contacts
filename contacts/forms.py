@@ -3,6 +3,7 @@ from .models import ContactList
 import re
 import os
 from django.utils import timezone
+from accounts.utils import tailwind_text_classes
 
 contact_list_tailwind_classes = (
     " w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none "
@@ -128,7 +129,7 @@ class ContactListForm(forms.ModelForm):
             ),
             "address": forms.Textarea(
                 attrs={
-                    "class": contact_list_tailwind_classes,
+                    "class": contact_list_tailwind_classes + tailwind_text_classes,
                     "rows": 3,
                     "placeholder": "Address",
                 }
@@ -183,7 +184,7 @@ class ContactListForm(forms.ModelForm):
             ),
             "notes": forms.Textarea(
                 attrs={
-                    "class": contact_list_tailwind_classes,
+                    "class": contact_list_tailwind_classes + tailwind_text_classes,
                     "rows": 4,
                     "placeholder": "Additional Notes",
                 }
