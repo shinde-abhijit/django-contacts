@@ -17,9 +17,9 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = "accounts.CustomUser"
 
 INSTALLED_APPS = [
-    'accounts',
-    'tailwind',
-    'theme',
+    "accounts",
+    "tailwind",
+    "theme",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -28,15 +28,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = "theme"
 
 INTERNAL_IPS = ["127.0.0.1"]
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 if DEBUG:
-    
-    INSTALLED_APPS += ['django_browser_reload']
+
+    INSTALLED_APPS += ["django_browser_reload"]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -49,7 +49,7 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
-    
+
     MIDDLEWARE += [
         "django_browser_reload.middleware.BrowserReloadMiddleware",
     ]
@@ -129,4 +129,3 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-

@@ -105,7 +105,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     ]  # required when using createsuperuser
 
     objects = CustomUserManager()
-    
+
     def clean(self):
         # Model-level validation
         if not self.first_name:
